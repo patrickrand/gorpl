@@ -22,10 +22,6 @@ func NewREPL() *REPL {
 	}
 }
 
-func (r *REPL) SetOutput(w io.Writer) {
-	r.output = w
-}
-
 func (r *REPL) Prompt() {
 	t := strconv.Itoa(r.ticker)
 	for n := len(t); n < 4; n++ {
@@ -33,6 +29,15 @@ func (r *REPL) Prompt() {
 	}
 	fmt.Fprintf(r.output, `gorpl:%s> `, t)
 	r.tick()
+}
+
+func (r *REPL) Reply(output string) {
+	fmt.Fprintln(r.output, "=>", output)
+}
+
+func (r *REPL) Exit() {
+	fmt.Fprintln(r.output, "exiting gorpl")
+	os.Exit(0)
 }
 
 func (r *REPL) tick() {
