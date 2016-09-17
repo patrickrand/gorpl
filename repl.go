@@ -45,3 +45,13 @@ func (r *REPL) tick() {
 		r.ticker = 0
 	}
 }
+
+var TmplMain = `
+import (
+	{{}}
+)
+
+func main() {
+
+}
+`
