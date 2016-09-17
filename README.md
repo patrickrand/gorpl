@@ -1,3 +1,5 @@
+> WIP as of Sep-17-2016
+
 # gorpl
 `gorpl` (rhymes with "purple") is a REPL based off a subset of the Go syntax.
 
