@@ -9,16 +9,16 @@ import (
 )
 
 type REPL struct {
+	*bufio.Scanner
 	ticker int
-	scan   *bufio.Scanner
 	output io.Writer
 }
 
 func NewREPL() *REPL {
 	return &REPL{
-		ticker: 0,
-		scan:   bufio.NewScanner(os.Stdin),
-		output: os.Stdout,
+		ticker:  0,
+		Scanner: bufio.NewScanner(os.Stdin),
+		output:  os.Stdout,
 	}
 }
 
@@ -32,7 +32,7 @@ func (r *REPL) Prompt() {
 }
 
 func (r *REPL) Reply(output string) {
-	fmt.Fprintln(r.output, "=>", output)
+	fmt.Fprintln(r.output, `=>`, output)
 }
 
 func (r *REPL) Exit() {

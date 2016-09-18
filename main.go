@@ -3,8 +3,8 @@ package main
 func main() {
 	repl := NewREPL()
 	repl.Prompt()
-	for repl.scan.Scan() {
-		input := repl.scan.Text()
+	for repl.Scan() {
+		input := repl.Text()
 		if input == "exit" {
 			repl.Exit()
 		}
