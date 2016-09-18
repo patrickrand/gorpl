@@ -2,13 +2,10 @@ package main
 
 func main() {
 	repl := NewREPL()
-	repl.Prompt()
-	for repl.Scan() {
-		input := repl.Text()
-		if input == "exit" {
-			repl.Exit()
-		}
-		repl.Reply(input)
-		repl.Prompt()
+	for repl.Loop() {
+		input := repl.Read()
+
+		output := repl.Eval(input)
+		repl.Print(output)
 	}
 }
